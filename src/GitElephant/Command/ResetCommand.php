@@ -27,7 +27,7 @@ class ResetCommand extends BaseCommand
      * @param \GitElephant\Repository $repo The repository object this command
      *                                      will interact with
      */
-    public function __construct(Repository $repo = null)
+    public function __construct(?Repository $repo = null)
     {
         parent::__construct($repo);
     }
@@ -59,7 +59,7 @@ class ResetCommand extends BaseCommand
      * @param Repository $repository
      * @return ResetCommand
      */
-    public static function getInstance(Repository $repository = null): \GitElephant\Command\ResetCommand
+    public static function getInstance(?Repository $repository = null): \GitElephant\Command\ResetCommand
     {
         return new self($repository);
     }

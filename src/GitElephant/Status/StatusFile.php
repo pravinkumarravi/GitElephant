@@ -73,7 +73,7 @@ class StatusFile
      * @param string $name    file name
      * @param string $renamed new file name (if renamed)
      */
-    private function __construct(string $x, string $y, string $name, string $renamed = null)
+    private function __construct(string $x, string $y, string $name, ?string $renamed = null)
     {
         $this->x = ' ' === $x ? null : $x;
         $this->y = ' ' === $y ? null : $y;
@@ -93,7 +93,7 @@ class StatusFile
         string $x,
         string $y,
         string $name,
-        string $renamed = null
+        ?string $renamed = null
     ): \GitElephant\Status\StatusFile {
         return new self($x, $y, $name, $renamed);
     }

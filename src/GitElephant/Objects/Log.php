@@ -82,7 +82,7 @@ class Log implements \ArrayAccess, \Countable, \Iterator
         $ref = 'HEAD',
         $path = null,
         int $limit = 15,
-        int $offset = null,
+        ?int $offset = null,
         bool $firstParent = false
     ) {
         $this->repository = $repository;
@@ -107,8 +107,8 @@ class Log implements \ArrayAccess, \Countable, \Iterator
     private function createFromCommand(
         $ref,
         $path = null,
-        int $limit = null,
-        int $offset = null,
+        ?int $limit = null,
+        ?int $offset = null,
         bool $firstParent = false
     ): void {
         $command = LogCommand::getInstance($this->getRepository())

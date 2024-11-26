@@ -82,7 +82,7 @@ class Branch extends NodeObject implements TreeishInterface
     public static function create(
         Repository $repository,
         string $name,
-        string $startPoint = null
+        ?string $startPoint = null
     ): \GitElephant\Objects\Branch {
         /** @var BranchCommand $branchCommand */
         $branchCommand = BranchCommand::getInstance($repository);

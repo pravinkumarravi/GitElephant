@@ -69,7 +69,7 @@ class Diff implements \ArrayAccess, \Countable, \Iterator
         Repository $repository,
         $commit1 = null,
         $commit2 = null,
-        string $path = null
+        ?string $path = null
     ): \GitElephant\Objects\Diff\Diff {
         $commit = new self($repository);
         $commit->createFromCommand($commit1, $commit2, $path);

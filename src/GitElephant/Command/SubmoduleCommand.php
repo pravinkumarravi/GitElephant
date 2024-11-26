@@ -43,7 +43,7 @@ class SubmoduleCommand extends BaseCommand
      * @param \GitElephant\Repository $repo The repository object this command
      *                                      will interact with
      */
-    public function __construct(Repository $repo = null)
+    public function __construct(?Repository $repo = null)
     {
         parent::__construct($repo);
     }
@@ -130,7 +130,7 @@ class SubmoduleCommand extends BaseCommand
         bool $recursive = false,
         bool $init = false,
         bool $force = false,
-        string $path = null
+        ?string $path = null
     ): string {
         $this->clearAll();
         $this->addCommandName(sprintf('%s %s', self::SUBMODULE_COMMAND, self::SUBMODULE_UPDATE_COMMAND));

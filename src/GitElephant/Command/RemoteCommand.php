@@ -44,7 +44,7 @@ class RemoteCommand extends BaseCommand
      * @param \GitElephant\Repository $repo The repository object this command
      *                                      will interact with
      */
-    public function __construct(Repository $repo = null)
+    public function __construct(?Repository $repo = null)
     {
         parent::__construct($repo);
     }
@@ -62,12 +62,12 @@ class RemoteCommand extends BaseCommand
      * @throws \RuntimeException
      * @return string Command string to pass to caller
      */
-    public function remote(SubCommandCommand $subcommand = null, array $options = []): string
+    public function remote(?SubCommandCommand $subcommand = null, array $options = []): string
     {
         $normalizedOptions = $this->normalizeOptions($options, $this->remoteCmdSwitchOptions());
-        
+
         $this->clearAll();
-        
+
         $this->addCommandName(self::GIT_REMOTE);
 
         foreach ($normalizedOptions as $value) {

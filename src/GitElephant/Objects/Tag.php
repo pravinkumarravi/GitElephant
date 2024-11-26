@@ -68,7 +68,7 @@ class Tag extends NodeObject
         Repository $repository,
         string $name,
         $startPoint = null,
-        string $message = null
+        ?string $message = null
     ): ?\GitElephant\Objects\Tag {
         $repository
             ->getCaller()

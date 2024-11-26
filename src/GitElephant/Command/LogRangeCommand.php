@@ -35,7 +35,7 @@ class LogRangeCommand extends BaseCommand
      * @param \GitElephant\Repository $repo The repository object this command
      *                                      will interact with
      */
-    public function __construct(Repository $repo = null)
+    public function __construct(?Repository $repo = null)
     {
         parent::__construct($repo);
     }
@@ -94,7 +94,7 @@ class LogRangeCommand extends BaseCommand
         if (null !== $path && !empty($path)) {
             $this->addPath($path);
         }
-        
+
         $this->addCommandSubject($refStart . '..' . $refEnd);
 
         return $this->getCommand();

@@ -38,7 +38,7 @@ class StashCommand extends BaseCommand
      * @param \GitElephant\Repository $repo The repository object this command
      *                                      will interact with
      */
-    public function __construct(Repository $repo = null)
+    public function __construct(?Repository $repo = null)
     {
         parent::__construct($repo);
     }
@@ -80,12 +80,12 @@ class StashCommand extends BaseCommand
      *
      * @return string
      */
-    public function listStashes(array $options = null): string
+    public function listStashes(?array $options = null): string
     {
         $this->clearAll();
 
         $this->addCommandName(self::STASH_COMMAND . ' list');
-        
+
         if (null !== $options) {
             $this->addCommandSubject($options);
         }

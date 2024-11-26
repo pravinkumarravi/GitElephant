@@ -37,7 +37,7 @@ interface CallerInterface
     public function execute(
         string $cmd,
         bool $git = true,
-        string $cwd = null
+        ?string $cwd = null
     ): CallerInterface;
 
     /**

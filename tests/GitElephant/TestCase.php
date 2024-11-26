@@ -85,7 +85,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
      *
      * @return void
      */
-    protected function initRepository(string $name = null, int $index = null): void
+    protected function initRepository(?string $name = null, ?int $index = null): void
     {
         $tempDir = realpath(sys_get_temp_dir());
         $tempName = null === $name
@@ -134,9 +134,9 @@ class TestCase extends \PHPUnit\Framework\TestCase
      */
     protected function addFile(
         string $name,
-        string $folder = null,
-        string $content = null,
-        Repository $repository = null
+        ?string $folder = null,
+        ?string $content = null,
+        ?Repository $repository = null
     ): void {
         $path = is_null($repository) ? $this->path : $repository->getPath();
         $filename = $folder == null
