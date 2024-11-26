@@ -40,11 +40,11 @@ abstract class AbstractCollection implements \IteratorAggregate
         return false;
     }
 
-  /**
-   * @param callable $callable
-   *
-   * @return \PhpOption\LazyOption
-   */
+    /**
+     * @param callable $callable
+     *
+     * @return \PhpOption\LazyOption
+     */
     public function find(callable $callable): LazyOption
     {
         $self = $this;
