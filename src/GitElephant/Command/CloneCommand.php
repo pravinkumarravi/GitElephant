@@ -38,7 +38,7 @@ class CloneCommand extends BaseCommand
      * @param \GitElephant\Repository $repo The repository object this command
      *                                      will interact with
      */
-    public function __construct(Repository $repo = null)
+    public function __construct(?Repository $repo = null)
     {
         parent::__construct($repo);
     }
@@ -57,9 +57,9 @@ class CloneCommand extends BaseCommand
      */
     public function cloneUrl(
         string $url,
-        string $to = null,
-        string $repoReference = null,
-        int $depth = null,
+        ?string $to = null,
+        ?string $repoReference = null,
+        ?int $depth = null,
         bool $recursive = false
     ): string {
         // get binary version before reset
@@ -90,7 +90,7 @@ class CloneCommand extends BaseCommand
                 $this->addCommandArgument('--shallow-submodules');
             }
         }
-        
+
         if ($recursive) {
             $this->addCommandArgument('--recursive');
         }

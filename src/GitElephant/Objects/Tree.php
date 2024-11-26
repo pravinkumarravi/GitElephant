@@ -117,7 +117,7 @@ class Tree extends NodeObject implements \ArrayAccess, \Countable, \Iterator
      * @throws \Symfony\Component\Process\Exception\RuntimeException
      * @internal param \GitElephant\Objects\Object|string $treeObject Object instance
      */
-    public function __construct(Repository $repository, $ref = 'HEAD', NodeObject $subject = null)
+    public function __construct(Repository $repository, $ref = 'HEAD', ?NodeObject $subject = null)
     {
         $this->position = 0;
         $this->repository = $repository;

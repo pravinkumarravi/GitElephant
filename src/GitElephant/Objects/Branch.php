@@ -82,7 +82,7 @@ class Branch extends NodeObject implements TreeishInterface
     public static function create(
         Repository $repository,
         string $name,
-        string $startPoint = null
+        ?string $startPoint = null
     ): \GitElephant\Objects\Branch {
         /** @var BranchCommand $branchCommand */
         $branchCommand = BranchCommand::getInstance($repository);
@@ -209,7 +209,6 @@ class Branch extends NodeObject implements TreeishInterface
             '/^\*?\ *?\(.*(detached).*\)\ +(\S{40})\ +(.+)$/',
         ];
 
-        $matches = [];
         while (empty($matches) and $regex = array_pop($regexList)) {
             preg_match($regex, trim($branchString), $matches);
         }

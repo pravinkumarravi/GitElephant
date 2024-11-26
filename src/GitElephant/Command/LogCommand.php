@@ -41,7 +41,7 @@ class LogCommand extends BaseCommand
      * @param \GitElephant\Repository $repo The repository object this command
      *                                      will interact with
      */
-    public function __construct(Repository $repo = null)
+    public function __construct(?Repository $repo = null)
     {
         parent::__construct($repo);
     }
@@ -57,7 +57,7 @@ class LogCommand extends BaseCommand
      * @throws \RuntimeException
      * @return string
      */
-    public function showObjectLog(NodeObject $obj, $branch = null, int $limit = null, int $offset = null): string
+    public function showObjectLog(NodeObject $obj, $branch = null, ?int $limit = null, ?int $offset = null): string
     {
         $subject = null;
         if (null !== $branch) {
@@ -84,7 +84,7 @@ class LogCommand extends BaseCommand
      * @throws \RuntimeException
      * @return string
      */
-    public function showLog($ref, $path = null, $limit = null, int $offset = null, bool $firstParent = false): string
+    public function showLog($ref, $path = null, $limit = null, ?int $offset = null, bool $firstParent = false): string
     {
         $this->clearAll();
 
@@ -114,7 +114,7 @@ class LogCommand extends BaseCommand
         if (null !== $path && !empty($path)) {
             $this->addPath($path);
         }
-        
+
         $this->addCommandSubject($ref);
 
         return $this->getCommand();

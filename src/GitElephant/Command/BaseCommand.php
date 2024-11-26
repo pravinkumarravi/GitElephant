@@ -76,14 +76,14 @@ class BaseCommand
     /**
      * the command subject
      *
-     * @var string|SubCommandCommand|null
+     * @var array|string|SubCommandCommand|null
      */
     private $commandSubject = null;
 
     /**
      * the command second subject (i.e. for branch)
      *
-     * @var string|SubCommandCommand|null
+     * @var array|string|SubCommandCommand|null
      */
     private $commandSubject2 = null;
 
@@ -112,7 +112,7 @@ class BaseCommand
      *
      * @param null|\GitElephant\Repository $repo The repo object to read
      */
-    public function __construct(Repository $repo = null)
+    public function __construct(?Repository $repo = null)
     {
         if (!is_null($repo)) {
             $this->addGlobalConfigs($repo->getGlobalConfigs());
@@ -148,7 +148,7 @@ class BaseCommand
      * @param Repository $repo
      * @return static
      */
-    public static function getInstance(Repository $repo = null)
+    public static function getInstance(?Repository $repo = null)
     {
         return new static($repo);
     }

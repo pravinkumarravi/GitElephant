@@ -47,7 +47,7 @@ class MainCommand extends BaseCommand
      * @param \GitElephant\Repository $repo The repository object this command
      *                                      will interact with
      */
-    public function __construct(Repository $repo = null)
+    public function __construct(?Repository $repo = null)
     {
         parent::__construct($repo);
     }
@@ -149,7 +149,7 @@ class MainCommand extends BaseCommand
         bool $stageAll = false,
         $author = null,
         bool $allowEmpty = false,
-        \DateTimeInterface $date = null
+        ?\DateTimeInterface $date = null
     ): string {
         $this->clearAll();
 
@@ -170,7 +170,7 @@ class MainCommand extends BaseCommand
         if ($allowEmpty) {
             $this->addCommandArgument('--allow-empty');
         }
-        
+
         if (null !== $date) {
             $this->addCommandArgument('--date');
             $this->addCommandArgument($date->format(\DateTimeInterface::RFC822));

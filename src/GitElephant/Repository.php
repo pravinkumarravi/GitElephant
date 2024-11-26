@@ -119,7 +119,7 @@ class Repository
      *
      * @throws Exception\InvalidRepositoryPathException
      */
-    public function __construct($repositoryPath, string $binary = null, $name = null)
+    public function __construct($repositoryPath, ?string $binary = null, $name = null)
     {
         $this->path = $repositoryPath;
         $this->caller = new Caller($binary, $repositoryPath);
@@ -135,7 +135,7 @@ class Repository
      *
      * @return \GitElephant\Repository
      */
-    public static function open($repositoryPath, string $binary = null, $name = null): \GitElephant\Repository
+    public static function open($repositoryPath, ?string $binary = null, $name = null): \GitElephant\Repository
     {
         return new self($repositoryPath, $binary, $name);
     }
@@ -156,7 +156,7 @@ class Repository
     public static function createFromRemote(
         $git,
         $repositoryPath = null,
-        string $binary = null,
+        ?string $binary = null,
         $name = null
     ): \GitElephant\Repository {
         if (null === $repositoryPath) {
@@ -295,7 +295,7 @@ class Repository
         $ref = null,
         $author = null,
         $allowEmpty = false,
-        \DateTimeInterface $date = null
+        ?\DateTimeInterface $date = null
     ): self {
         $currentBranch = null;
         if (!is_null($ref)) {
@@ -623,7 +623,7 @@ class Repository
      * @throws \Symfony\Component\Process\Exception\RuntimeException
      * @return Repository
      */
-    public function createTag(string $name, $startPoint = null, string $message = null): self
+    public function createTag(string $name, $startPoint = null, ?string $message = null): self
     {
         Tag::create($this, $name, $startPoint, $message);
 
@@ -876,7 +876,7 @@ class Repository
         $refEnd,
         $path = null,
         int $limit = 10,
-        int $offset = null,
+        ?int $offset = null,
         bool $firstParent = false
     ) {
         // Handle when clients provide bad start reference on branch creation
@@ -910,7 +910,7 @@ class Repository
         NodeObject $obj,
         $branch = null,
         int $limit = 1,
-        int $offset = null
+        ?int $offset = null
     ): \GitElephant\Objects\Log {
         $command = LogCommand::getInstance($this)->showObjectLog($obj, $branch, $limit, $offset);
 
@@ -1003,9 +1003,9 @@ class Repository
      */
     public function cloneFrom(
         string $url,
-        string $to = null,
-        string $repoReference = null,
-        int $depth = null,
+        ?string $to = null,
+        ?string $repoReference = null,
+        ?int $depth = null,
         bool $recursive = false
     ): self {
         $command = Command\CloneCommand::getInstance($this)
@@ -1118,7 +1118,7 @@ class Repository
      * @throws InvalidArgumentException
      * @throws \Symfony\Component\Process\Exception\RuntimeException
      */
-    public function push($to = null, $ref = null, string $args = null): void
+    public function push($to = null, $ref = null, ?string $args = null): void
     {
         $this->caller->execute(PushCommand::getInstance($this)->push($to, $ref, $args));
     }
@@ -1333,7 +1333,7 @@ class Repository
      * @param boolean     $includeUntracked
      * @param boolean     $keepIndex
      */
-    public function stash(string $message = null, bool $includeUntracked = false, bool $keepIndex = false): void
+    public function stash(?string $message = null, bool $includeUntracked = false, bool $keepIndex = false): void
     {
         $stashCommand = StashCommand::getInstance($this);
         $command = $stashCommand->save($message, $includeUntracked, $keepIndex);
@@ -1347,7 +1347,7 @@ class Repository
      *
      * @return array
      */
-    public function stashList(array $options = null): array
+    public function stashList(?array $options = null): array
     {
         $stashCommand = StashCommand::getInstance($this);
         $command = $stashCommand->listStashes($options);

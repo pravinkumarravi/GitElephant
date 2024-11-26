@@ -75,7 +75,7 @@ class Caller extends AbstractCaller
     public function execute(
         string $cmd,
         bool $git = true,
-        string $cwd = null,
+        ?string $cwd = null,
         array $acceptedExitCodes = [0]
     ): CallerInterface {
         if ($git) {
@@ -107,7 +107,7 @@ class Caller extends AbstractCaller
             $text .= "\n" . $process->getOutput();
             throw new \RuntimeException($text);
         }
-        
+
         $this->rawOutput = $process->getOutput();
         // rtrim values
         $values = array_map('rtrim', explode(PHP_EOL, $process->getOutput()));

@@ -82,7 +82,7 @@ class Remote
      * @throws \InvalidArgumentException
      * @throws \UnexpectedValueException
      */
-    public function __construct(Repository $repository, string $name = null, bool $queryRemotes = true)
+    public function __construct(Repository $repository, ?string $name = null, bool $queryRemotes = true)
     {
         $this->repository = $repository;
         if ($name) {
@@ -102,7 +102,7 @@ class Remote
      */
     public static function pick(
         Repository $repository,
-        string $name = null,
+        ?string $name = null,
         bool $queryRemotes = true
     ): \GitElephant\Objects\Remote {
         return new self($repository, $name, $queryRemotes);
@@ -119,7 +119,7 @@ class Remote
      * @throws \Symfony\Component\Process\Exception\RuntimeException
      * @return array<string>
      */
-    public function getVerboseOutput(RemoteCommand $remoteCmd = null): array
+    public function getVerboseOutput(?RemoteCommand $remoteCmd = null): array
     {
         if ($remoteCmd === null) {
             $remoteCmd = RemoteCommand::getInstance($this->repository);
@@ -146,8 +146,8 @@ class Remote
      * @return array<string>
      */
     public function getShowOutput(
-        string $name = null,
-        RemoteCommand $remoteCmd = null,
+        ?string $name = null,
+        ?RemoteCommand $remoteCmd = null,
         bool $queryRemotes = true
     ): array {
         if ($remoteCmd === null) {
