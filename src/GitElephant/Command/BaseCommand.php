@@ -76,14 +76,14 @@ class BaseCommand
     /**
      * the command subject
      *
-     * @var string|SubCommandCommand|null
+     * @var array|string|SubCommandCommand|null
      */
     private $commandSubject = null;
 
     /**
      * the command second subject (i.e. for branch)
      *
-     * @var string|SubCommandCommand|null
+     * @var array|string|SubCommandCommand|null
      */
     private $commandSubject2 = null;
 

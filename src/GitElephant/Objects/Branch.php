@@ -209,7 +209,6 @@ class Branch extends NodeObject implements TreeishInterface
             '/^\*?\ *?\(.*(detached).*\)\ +(\S{40})\ +(.+)$/',
         ];
 
-        $matches = [];
         while (empty($matches) and $regex = array_pop($regexList)) {
             preg_match($regex, trim($branchString), $matches);
         }
